@@ -1,0 +1,17 @@
+.vs/
+x64/
+Debug/
+Release/
+*.user
+*.suo
+*.db
+*.opensdf
+*.sdf
+*.ipch
+*.obj
+*.pdb
+*.ilk
+*.tlog
+*.log
+*.idb
+!SDK/
