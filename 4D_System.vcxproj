@@ -136,7 +136,10 @@
     <ClCompile Include="cmd.cpp" />
     <ClCompile Include="data.cpp" />
     <ClCompile Include="display.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="OV9281_Driver.cpp" />
     <ClCompile Include="sample.cpp" />
+    <ClCompile Include="SimulatedEvent.cpp" />
     <ClCompile Include="temperature.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,10 +154,12 @@
     <ClInclude Include="SDK\include\libirtemp.h" />
     <ClInclude Include="SDK\include\libiruvc.h" />
     <ClInclude Include="SDK\include\need_errno.h" />
+    <ClInclude Include="SDK\include\OV9281_Driver.h" />
     <ClInclude Include="SDK\include\pthread.h" />
     <ClInclude Include="SDK\include\sample.h" />
     <ClInclude Include="SDK\include\sched.h" />
     <ClInclude Include="SDK\include\semaphore.h" />
+    <ClInclude Include="SDK\include\SimulatedEvent.h" />
     <ClInclude Include="SDK\include\temperature.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

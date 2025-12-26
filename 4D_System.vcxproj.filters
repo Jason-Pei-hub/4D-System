@@ -33,6 +33,15 @@
     <ClCompile Include="temperature.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OV9281_Driver.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SimulatedEvent.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDK\include\all_config.h">
@@ -81,6 +90,12 @@
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="SDK\include\temperature.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\include\OV9281_Driver.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\include\SimulatedEvent.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
