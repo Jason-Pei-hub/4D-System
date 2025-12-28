@@ -1,3 +1,4 @@
+# === 1. Windows / Visual Studio 遗留产物 (保留以防万一) ===
 .vs/
 x64/
 Debug/
@@ -15,3 +16,20 @@ Release/
 *.log
 *.idb
 !SDK/
+
+# === 2. 树莓派 / Linux C++ 编译产物 (新增) ===
+*.o
+*.out
+*.a
+*.so
+*.so.*
+
+# === 3. 构建工具目录 (强烈建议) ===
+# 树莓派上常用 cmake，这会产生大量中间文件
+build/
+bin/
+obj/
+
+# === 4. 其他临时文件 ===
+.DS_Store
+*.swp
