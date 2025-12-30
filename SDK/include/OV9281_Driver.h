@@ -1,9 +1,18 @@
 #ifndef OV9281_DRIVER_H
 #define OV9281_DRIVER_H
 
-#include <opencv2/opencv.hpp>
+#include <vector>
 #include <thread>
 #include <mutex>
+#include <atomic>
+#include <sys/time.h>
+
+// 定义数据包结构体用于回调或获取
+struct RawDataPacket {
+    std::vector<unsigned char> data;
+    uint64_t timestamp_us;
+    uint32_t frame_id;
+};
 
 class OV9281_Driver {
 public:
@@ -13,23 +22,28 @@ public:
     bool init(int camera_id, int target_fps);
     void start();
     void stop();
-    bool getFrame(cv::Mat& frame);
     
-    // 【新增】运行时调参接口
-    void setHighSpeedExposure(); 
+    // 获取最新的一帧原始 MJPG 数据（线程安全，用于发送）
+    bool getLatestRawFrame(RawDataPacket& packet);
 
 private:
     void capture_loop();
+    int set_control(int id, int value); // V4L2 控制辅助函数
 
-    cv::VideoCapture cap;
-    bool is_running;
+    int fd; // 设备文件描述符
+    std::atomic<bool> is_running;
     std::thread worker;
     std::mutex mtx;
-    cv::Mat latest_frame;
     
-    int actual_width;
-    int actual_height;
-    int actual_fps;
+    RawDataPacket latest_packet;
+    bool has_new_frame;
+
+    struct Buffer {
+        void *start;
+        size_t length;
+    };
+    std::vector<Buffer> buffers;
+    int n_buffers;
 };
 
 #endif
