@@ -1,4 +1,8 @@
-# === 1. Windows 遗留产物 (保持忽略) ===
+# ====================================
+# TE-GS Project Git Ignore Rules
+# ====================================
+
+# === 1. Windows/Visual Studio 遗留产物 (忽略) ===
 .vs/
 x64/
 Debug/
@@ -16,40 +20,38 @@ Release/
 *.log
 *.idb
 
-# === 2. 树莓派编译中间产物 (保留) ===
+# === 2. 编译中间产物 (忽略) ===
+# 通常我们不上传 .o 和 .out 文件，保持仓库轻量
 *.o
 *.out
 
-# === 3. 特殊修改：允许上传 build 和 SDK ===
-# 注意：下面这两行必须确保前面没有其他规则冲突
+# === 3. 特殊白名单：强制上传 build 和 SDK ===
+# Git 默认不忽略文件夹，除非上面有规则覆盖。
+# 这里加感叹号是双重保险，确保这两个关键目录被提交。
 !build/
 !SDK/
 
-# 如果你之前写了 build/ 这一行，请务必将其删掉或注释掉
-# build/  <-- 这一行必须消失
-
-# === 4. 其他临时文件 ===
+# === 4. 操作系统/编辑器临时文件 (忽略) ===
 .DS_Store
 *.swp
+.idea/
+.vscode/
 
-# === 5. Python 工程专用忽略规则 ===
-# Python 字节码缓存 (最重要)
+# === 5. Python 工程专用规则 (忽略) ===
+# 字节码缓存 (绝对不要上传这些)
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Python 虚拟环境 (如果你在本地创建了 venv)
+# 虚拟环境 (本地环境不上传)
 venv/
 .venv/
 env/
 ENV/
 
-# PyCharm / VSCode 配置 (可选，防止IDE配置上传)
-.idea/
-.vscode/
-
-# Python 打包产生的临时文件夹 (如果有 setup.py)
+# 打包分发临时文件
 *.egg-info/
 dist/
-# 注意：Python 打包有时也会生成 build/，但你前面已经强制保留了 !build/
-# 如果 Python 工程是在子目录 PC_Server_Python 下，互不影响。
+# 注意：Python打包通常也会生成 build/，但因为上面第3条我们强制保留了 build/
+# 所以这里 Python setup.py 生成的 build 也会被上传。
+# 如果这造成困扰，请手动管理。
